@@ -4,8 +4,8 @@
 
 // Este programa cria Filas e Listas Ordenadas estáticas
 
-// A Lista Ordenada organiza seu conteudo em ordem crescente na hora da inserção
-// Já a fila, utiliza o metodo FIFO, ou seja o conteudo dela é apresentado em ordem de entrada,
+// A Lista Ordenada organiza o seu content em ordem crescente na hora da inserção
+// Já a fila, utiliza o metodo FIFO, ou seja, o conteúdo dela é apresentado em ordem de entrada,
 // onde o primeiro a entrar é o primeiro a sair
 
 //Verifica se a lista ou fila está cheia
@@ -46,10 +46,10 @@ int* criarArray(int array[], int tamArray) {
     return array;
 }
 
-//Funcao para criar fila
+//Função para criar fila
 void funcFila() {
-    //A variavel tipo diferencia a lista da fila
-    int tamFila, tipo = 0;
+    
+    int tamFila;
     do {
         printf("Informe o tamanho da fila: ");
         scanf("%d", &tamFila);
@@ -62,18 +62,18 @@ void funcFila() {
 
     while (resposta!=4) {
 
-    printf("\n Operacoes em Filas:");
+    printf("\n Operações em Filas:");
     printf("\n (1) - Enqueue");
     printf("\n (2) - Dequeue");
     printf("\n (3) - Mostra fila");
     printf("\n (4) - Sair");
-    printf("\n Digite a opcao: ");
+    printf("\n Digite a opção: ");
     scanf("%d", &resposta);
 
         switch (resposta) {
             case 1:
                 if (ArrayCheio(fila, tamFila))
-                    printf("\n Fila cheia! Impossivel adicionar outro numero");
+                    printf("\n Fila cheia! Impossível adicionar outro numero");
                 else {
                     printf(" Insira um numero (diferente de -1): ");
                     scanf("%d", &aux);
@@ -81,12 +81,12 @@ void funcFila() {
                         printf(" Numero invalido!");
                     else
                       for (int i=0; i<tamFila; i++) {
-                        //Se a posicao estiver preenchida, passa para a proxima
+                        //Se a posição estiver preenchida, passa para a próxima
                         if (fila[i] != -1)
                             continue;
-                        //Senao, a posicao passa a valer o numero informado
+                        //Senão, a posição passa a valer o número informado
                         fila[i] = aux;
-                        printf("\n Elemento %i inserido com sucesso na posicao %i", aux, i);
+                        printf("\n Elemento %i inserido com sucesso na posição %i", aux, i);
                         break;
                     }
                 }
@@ -95,11 +95,11 @@ void funcFila() {
                 if (ArrayVazio(fila, tamFila)) {
                     printf("\n Fila vazia!");
                 } else {
-                    printf("\n Elemento %i retirado da Fila na posicao zero!", fila[0]);
-                    //Ao utilizar a funcao dequeue, removemos o primeiro elemento da lista, igualando-o a -1
+                    printf("\n Elemento %i retirado da Fila na posição zero!", fila[0]);
+                    //Ao utilizar a função dequeue, removemos o primeiro elemento da lista, igualando-o a -1
                     fila[0]=-1;
-                    //Depois, reorganizamos a lista, passando o -1 para o final, ja que um novo elemento so pode ser adicionado
-                    //se a posicao i for preenchida com o numero -1
+                    //Depois, reorganizamos a lista, passando o −1 para o final, ja que um novo elemento so pode ser adicionado
+                    //se a posição i for preenchida com o número −1
                     for (int j=1; j<tamFila-1; j++)
                         if (fila[j-1]==-1) {
                             fila[j-1]=fila[j];
@@ -122,7 +122,7 @@ void funcFila() {
                 }
                 break;
             default:
-                printf("\n Operacao invalida!");
+                printf("\n Operação invalida!");
                 break;
         }
     }
@@ -140,13 +140,13 @@ void funcLista() {
     int auxLista[tamLista], *lista = criarArray(auxLista, tamLista);
 
     while (resposta<5) {
-        printf("\n Operacoes em Listas Ordenadas:");
+        printf("\n Operações em Listas Ordenadas:");
         printf("\n (1) - Ins");
         printf("\n (2) - Rem");
         printf("\n (3) - Find");
         printf("\n (4) - Mostrar lista");
         printf("\n (5) - Sair");
-        printf("\n Digite a opcao: ");
+        printf("\n Digite a opção: ");
         scanf("%d", &resposta);
 
         switch (resposta) {
@@ -188,14 +188,14 @@ void funcLista() {
                         } else {
                             // Nesta condição, verificamos se o número anterior é o "nulo"
                             // Se não for, temos que levar todos os elementos - a partir do "primeiro menor" em relação
-                            // ao numero de entrada - para a esquerda
+                            // ao número de entrada - para a esquerda
                             if (lista[posicao-1] != -1) {
                                 // O "último índice" é o primeiro valor não nulo do Array (da esquerda para a direita)
                                 for (int i = ultimoIndice; i <= posicao; i++) {
                                     lista[i-1] = lista[i];
                                 }
                                 // Assim que os elementos forem levados para a esquerda, podemos colocar o número de entrada
-                                // em seu devido lugar
+                                // no seu devido lugar
                                 lista[posicao] = numero;
 
                             } else {
@@ -318,4 +318,3 @@ int main() {
         }
     } while (servico != 3);
 }
-
