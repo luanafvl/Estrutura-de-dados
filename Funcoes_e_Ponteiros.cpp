@@ -1,17 +1,19 @@
 #include <stdio.h>
+#include <locale.h>
 
-void entradaValores(float *n1, float *n2) {
+void EntradaValores(float *n1, float *n2) {
     //Entrada de dados
     printf("\nNumero 1: ");
     scanf("%f", &*n1);
     printf("\nNumero 2: ");
     scanf("%f", &*n2);
+    printf("\n");
 }
 
 
 //Implementando funçoes e processando dados
-void TrocarValores(float *n1, float *n2, float aux = 0){
-    aux = *n1;
+void TrocarValores(float *n1, float *n2){
+    float aux = *n1;
     *n1 = *n2;
     *n2 = aux;
 }
@@ -23,24 +25,23 @@ float Soma (float n1, float n2) {
 
 
 float Divisao(float n1,float n2) {
-    if (n2 == 0){
+    if (n2 == 0)
         return 0;
-    }
     return n1/n2;
 }
 
 
 float Potencia(float n1, float n2, float potencia = 1){
-    if (n2!=0){
-        for (int i = n2; i > 0; i--){
+    if (n2!=0)
+        for (int i = n2; i > 0; i--)
             potencia*=n1;
-        }
-    }
     return potencia;
 }
 
 
 int main(){
+
+	setlocale(LC_ALL, "Portuguese");
 
     int opt;
     float n1, n2;
@@ -51,7 +52,7 @@ int main(){
     printf("================================");
 
     printf("\n\nInsira os números para realizarmos as operações.\n");
-    entradaValores(&n1, &n2);
+    EntradaValores(&n1, &n2);
 
     do {
         printf("\nSelecione:");
@@ -62,24 +63,25 @@ int main(){
         printf("\n(5) - Troca dos valores");
         printf("\n(6) - Sair\n");
         scanf("%d",&opt);
+        printf("\n");
 
         printf("Opção selecionada: ");
         switch (opt) {
             case 1:
                 printf("(1) - Informar novos valores.\n");
-                entradaValores(&n1, &n2);
+                EntradaValores(&n1, &n2);
                 break;
             case 2:
                 printf("(2) - Soma.\n");
-                printf("\n %.1f + %.1f = %.2f", n1, n2, Soma(n1, n2));
+                printf("\n%.1f + %.1f = %.2f", n1, n2, Soma(n1, n2));
                 break;
             case 3:
                 printf("(3) - Divisao.\n");
-                printf("\n %.1f / %.1f = %.2f", n1, n2, Divisao(n1, n2));
+                printf("\n%.1f / %.1f = %.2f", n1, n2, Divisao(n1, n2));
                 break;
             case 4:
                 printf("(4) - Potencia.\n");
-                printf("\n %.1f ^ %.1f = %.2f", n1, n2, Potencia(n1, n2));
+                printf("\n%.1f ^ %.1f = %.2f", n1, n2, Potencia(n1, n2));
                 break;
             case 5:
                 printf("(5) - Troca dos valores.\n");
@@ -90,15 +92,14 @@ int main(){
                 break;
             case 6:
                 printf("(6) - Sair.\n");
-                printf("Até logo!");
                 break;
             default:
                 printf("Opção inválida.");
         }
+        printf("\n");
     } while (opt != 6);
 
     printf("\n-------------------");
     printf("\nPrograma encerrado!");
     printf("\n-------------------");
 }
-
