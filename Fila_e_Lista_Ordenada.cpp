@@ -100,7 +100,7 @@ void funcFila() {
                     fila[0]=-1;
                     //Depois, reorganizamos a lista, passando o −1 para o final, ja que um novo elemento so pode ser adicionado
                     //se a posição i for preenchida com o número −1
-                    for (int j=1; j<tamFila-1; j++)
+                    for (int j=1; j<tamFila; j++)
                         if (fila[j-1]==-1) {
                             fila[j-1]=fila[j];
                             fila[j]=-1;
